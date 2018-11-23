@@ -24,8 +24,6 @@ import static com.umg.technology.bulkapiservice.controller.constant.RequestMappi
 @Api(description = "Operations pertaining to BigQuery requests")
 public class BulkApiServiceController {
 
-    // TODO check log level and respones type
-
     private QueryOrchestrator queryOrchestrator;
 
     public BulkApiServiceController(final QueryOrchestrator queryOrchestrator) {
