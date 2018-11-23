@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.umg.technology.bulkapiservice.service.cloudsql.dao.impl.mapper.DBPartnerQueryMapper">
+
+    <select id="getPartnerQuery" parameterType="com.umg.technology.bulkapiservice.controller.type.RequestQuery" resultType="com.umg.technology.bulkapiservice.service.cloudsql.type.PartnerQuery">
+        SELECT
+        id as queryId,
+        request_query as queryString
+        FROM
+        mypocdb.partner_requests
+        WHERE
+        partner_id = #{partnerId}
+        AND id = #{queryId};
+
+        UPDATE
+        mypocdb.partner_requests
+        SET
+        last_access = now();
+    </select>
+
+    <insert id="insertQueryJobResult"  parameterType="com.umg.technology.bulkapiservice.service.bigquery.type.QueryJobResult">
+        INSERT INTO
+        mypocdb.job_info
+        (id, job_state, table_name, last_update)
+        VALUES
+        (#{jobId}, #{jobState}, #{tableName}, now())
+    </insert>
+
+    <select id="getTableName" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT
+        table_name as tableName
+        FROM
+        mypocdb.job_info
+        WHERE
+        id = #{jobId};
+    </select>
+
+</mapper>
