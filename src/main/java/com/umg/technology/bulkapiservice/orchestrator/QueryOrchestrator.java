@@ -85,7 +85,8 @@ public class QueryOrchestrator {
      * @throws InterruptedException
      *         Extract job interrupted
      */
-    public QueryJobGCSResult getQueryJobResultGCS(final String jobId) throws EntityNotFoundException, JobNotDoneException, InterruptedException {
+    public QueryJobGCSResult getQueryJobResultGCS(final String jobId)
+            throws EntityNotFoundException, JobNotDoneException, InterruptedException {
 
         log.info("getQueryJobResultGCS() start...");
 

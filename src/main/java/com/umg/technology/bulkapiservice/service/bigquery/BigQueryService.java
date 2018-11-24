@@ -176,7 +176,8 @@ public class BigQueryService {
      * @return Destination GCS URI
      */
     private String generateGCSUri(final String tableName) {
-        return bigQueryConfiguration.getDestGcsPrefix() + tableName + "." + bigQueryConfiguration.getExportFormat().toLowerCase();
+        return bigQueryConfiguration.getDestGcsPrefix() + tableName
+                + "." + bigQueryConfiguration.getExportFormat().toLowerCase();
     }
 
 }

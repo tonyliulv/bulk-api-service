@@ -14,7 +14,8 @@ import java.util.stream.IntStream;
 public class EntityNotFoundException extends Exception {
 
     public EntityNotFoundException(final Class clazz, final String... searchParamsMap) {
-        super(EntityNotFoundException.generateMessage(clazz.getSimpleName(), toMap(String.class, String.class, searchParamsMap)));
+        super(EntityNotFoundException.generateMessage(clazz.getSimpleName(),
+                toMap(String.class, String.class, searchParamsMap)));
     }
 
     private static String generateMessage(final String entity, final Map<String, String> searchParams) {

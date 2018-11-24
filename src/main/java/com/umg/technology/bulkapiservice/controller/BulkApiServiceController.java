@@ -42,7 +42,7 @@ public class BulkApiServiceController {
         return new ResponseEntity<>(queryJobResult, HttpStatus.ACCEPTED);
     }
 
-    //@ApiOperation(value = "Get state of a query job", response = QueryJobState.class, produces = "application/json")
+    @ApiOperation(value = "Get state of a query job", response = QueryJobState.class, produces = "application/json")
     @RequestMapping(value = QUERY_JOB_STATE, method = RequestMethod.GET)
     public ResponseEntity<QueryJobState>  getQueryJobState(@PathVariable final String jobId) throws EntityNotFoundException {
 
@@ -53,7 +53,8 @@ public class BulkApiServiceController {
 
     @ApiOperation(value = "Get query result in GCS", response = QueryJobGCSResult.class, produces = "application/json")
     @RequestMapping(value = QUERY_JOB_RESULT_GCS, method = RequestMethod.GET)
-    public ResponseEntity<QueryJobGCSResult> getQueryJobResultGCS(@PathVariable final String jobId) throws EntityNotFoundException, JobNotDoneException, InterruptedException {
+    public ResponseEntity<QueryJobGCSResult> getQueryJobResultGCS(@PathVariable final String jobId)
+            throws EntityNotFoundException, JobNotDoneException, InterruptedException {
 
         log.info("getQueryJobResultGCS() start...");
 
